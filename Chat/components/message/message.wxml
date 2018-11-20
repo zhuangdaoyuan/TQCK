@@ -1,0 +1,23 @@
+<!--components/message/message.wxml-->
+<block wx:if="{{!isTbPt}}">
+    <view class='message'>
+        <view class='nickName'>{{nick}}</view>
+        <view class="block">
+            <image class='userinfo-avatar' src="{{picUrl}}"></image>
+            <view class='triangle'></view>
+            <view class='text'>{{title}}</view>
+            <view class='text'>{{actionUrl}}</view>
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <view class='message myMessage'>
+        <view class='nickName myNickName'>{{nick}}</view>
+        <view class="block myBlock">
+            <image class='userinfo-avatar myImage' src="{{picUrl}}"></image>
+            <view class='triangle myTriangle'></view>
+            <view class='text myText'>{{title}}</view>  
+            <view class='text'>{{actionUrl}}</view>
+        </view>
+    </view>
+</block>
