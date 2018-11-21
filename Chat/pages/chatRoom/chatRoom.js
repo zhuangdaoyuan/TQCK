@@ -78,15 +78,20 @@ Page({
   },
   send: function(e){
     var self = this;
-    if (self.data.inputValue.trim() !== ''){
+    var keyWord = this.data.inputValue.trim();
+    if (keyWord !== ''){
       wx.request({
-        url: 'https://pub.alimama.com/items/search.json?q=' + this.data.inputValue.trim()+'&_t=1542694678010&auctionTag=&perPageSize=50&shopTag=&t=1542694678014&_tb_token_=33e1d737e33e5&pvid=10_60.191.79.194_2952_1542694189090',
+        url: 'https://pub.alimama.com/items/search.json',
+        data:{
+          q: keyWord,
+          perPageSize:5
+        },
         header:{
           'content-type': 'application/json' // 默认值
         },
         success(res){
           self.setData({
-            items: res.data  //如果在sucess直接写this就变成了wx.request()的this了.必须为send函数的this,不然无法重置调用函数
+            items: res.data.data.pageList  //如果在sucess直接写this就变成了wx.request()的this了.必须为send函数的this,不然无法重置调用函数
           })
         },
         fail: function (err) { },//请求失败

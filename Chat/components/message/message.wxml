@@ -6,7 +6,6 @@
             <image class='userinfo-avatar' src="{{picUrl}}"></image>
             <view class='triangle'></view>
             <view class='text'>{{title}}</view>
-            <view class='text'>{{actionUrl}}</view>
         </view>
     </view>
 </block>
@@ -17,7 +16,6 @@
             <image class='userinfo-avatar myImage' src="{{picUrl}}"></image>
             <view class='triangle myTriangle'></view>
             <view class='text myText'>{{title}}</view>  
-            <view class='text'>{{actionUrl}}</view>
         </view>
     </view>
 </block>
