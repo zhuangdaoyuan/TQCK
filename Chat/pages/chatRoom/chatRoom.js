@@ -9,7 +9,6 @@ Page({
    */
   data: {
     inputValue: '',
-    msgKey:0,
     items:[]
   },
 
@@ -79,19 +78,24 @@ Page({
   send: function(e){
     var self = this;
     var keyWord = this.data.inputValue.trim();
+    var responseItems;
+    var userMsg;
     if (keyWord !== ''){
       wx.request({
         url: 'https://pub.alimama.com/items/search.json',
         data:{
           q: keyWord,
-          perPageSize:5
+          perPageSize:1
         },
         header:{
           'content-type': 'application/json' // 默认值
         },
-        success(res){
+        success:function(res){
           self.setData({
-            items: res.data.data.pageList  //如果在sucess直接写this就变成了wx.request()的this了.必须为send函数的this,不然无法重置调用函数
+            // responseItems :res.data.data.pageList
+            // items: items.push(res.data.data.pageList) 
+            items: res.data.data.pageList 
+            //如果在sucess直接写this就变成了wx.request()的this了.必须为send函数的this,不然无法重置调用函数
           })
         },
         fail: function (err) { },//请求失败
@@ -99,7 +103,12 @@ Page({
       })
 
         this.setData({
-            inputValue: ""
+          userMsg:{
+            content:this.data.inputValue,
+            isUserMsg:true
+          },
+          items:this.data.items.push(userMsg),
+          inputValue: ""
         })
     }
   }

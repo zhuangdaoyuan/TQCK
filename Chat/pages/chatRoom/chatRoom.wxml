@@ -8,7 +8,7 @@
             picUrl="{{item.picUrl}}"
             title="{{item.title}}"
             actionUrl="{{item.actionUrl}}"
-            isTbPt="{{item.isTbPt}}"
+            isUserMsg="{{item.isUserMsg}}"
             wx:key="{{items.key}}"
         ></message>
     </scroll-view>

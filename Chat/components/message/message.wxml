@@ -1,5 +1,5 @@
 <!--components/message/message.wxml-->
-<block wx:if="{{!isTbPt}}">
+<block wx:if="{{!isUserMsg}}">
     <view class='message'>
         <view class='nickName'>{{nick}}</view>
         <view class="block">
